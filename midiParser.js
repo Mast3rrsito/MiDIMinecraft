@@ -10,14 +10,18 @@ export async function parseMidiFile(file) {
     track.notes.forEach(note => {
       events.push({
         track: trackIndex,
-        time: note.time,
-        duration: note.duration,
+        time: note.time,          // en segundos
+        duration: note.duration,  // en segundos
         midi: note.midi,
         velocity: note.velocity,
-        channel: track.channel
+        channel: track.channel,
+        program: track.instrument?.number || 1
       })
     })
   })
+
+  // ordenar por tiempo absoluto
+  events.sort((a,b) => a.time - b.time)
 
   return {
     header: midi.header,
