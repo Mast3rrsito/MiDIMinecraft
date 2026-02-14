@@ -1,0 +1,11 @@
+body {
+  font-family: monospace;
+  background: #111;
+  color: #0f0;
+  padding: 20px;
+}
+
+input, button {
+  margin: 5px;
+  padding: 5px;
+}
